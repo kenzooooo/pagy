@@ -27,6 +27,8 @@ class Pagy
     # You may need to override this method for collections without offset|limit
     def pagy_get_items(collection, pagy)
 
+      binding.pry
+
       from = (pagy.offset - 1) * pagy.items
       to = from + pagy.items
       collection.where("#{collection.table_name}.id between #{from} and #{to}")
