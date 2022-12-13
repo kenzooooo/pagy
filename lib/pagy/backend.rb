@@ -26,7 +26,7 @@ class Pagy
     # Sub-method called only by #pagy: here for easy customization of record-extraction by overriding
     # You may need to override this method for collections without offset|limit
     def pagy_get_items(collection, pagy)
-      collection.where("#{collection.table_name}.id > #{pagy.offset}").limit(pagy.items)
+      collection.where("#{collection.table_name}.id between #{pagy.offset} and #{pagy.offset + pagy.items}")
     end
   end
 end
